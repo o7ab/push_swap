@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// #include <stdio.h>
 #include <limits.h>
 
 char	*ft_strrchr(const char *str, int c)
@@ -26,7 +24,7 @@ char	*ft_strrchr(const char *str, int c)
 	{
 		return ((char *)str + ft_strlen((char *)str));
 	}
-	while (i != SIZE_T_MAX)
+	while (i != INT_MAX)
 	{
 		if (str[i] == j)
 		{
