@@ -18,15 +18,18 @@ int	ft_check(char *str)
 	char	**split;
 
 	i = 0;
-	split = ft_split(str, " ");
-	if (!split)
+	if (!str)
 		return (0);
-	while (split[i] != '\0')
+	split = ft_split(str, ' ');
+	if (!split)
+		return (0); 
+	while (split[i] != 0)
 	{
 		if (ft_atoi(split[i]) == 0)
 			return (0);
 		i++;
 	}
+	return (1);
 }
 
 int	ft_argcheck(int argc, char **argv, t_push *spec)
@@ -63,4 +66,5 @@ int main(int argc, char **argv)
 		printf("Invalid arguments \n");
 		return (0);
 	}
+	printf("shit worked \n");
 }

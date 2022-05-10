@@ -18,9 +18,13 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+
 typedef struct s_push
 {
 	char	*numbers;
 }		t_push;
+
+int	ft_argcheck(int argc, char **argv, t_push *spec);
+int	ft_check(char *str);
 
 #endif

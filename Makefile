@@ -22,7 +22,7 @@ libft	= ./libft/libft.a
 
 $(NAME)	:
 		make -C ./libft
-		gcc $(CFLAGS) $(libft) -o push_swap $(SRCS)
+		gcc $(CFLAGS) -o push_swap $(SRCS) $(libft)
 
 all	: $(NAME)
 

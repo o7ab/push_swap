@@ -69,7 +69,3 @@ char	*ft_itoa(int n)
 	ret = ft_place(ret, n, digits);
 	return (ret);
 }
-int main()
-{
-  printf("%s \n", ft_itoa(648));
-}
