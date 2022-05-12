@@ -12,8 +12,6 @@
 
 #include "libft.h"
 #include "limits.h"
-#include <stdio.h>
-#include <string.h>
 
 int	ft_atoi(const char *str)
 {

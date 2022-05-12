@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+# ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdio.h>
@@ -18,13 +18,13 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-
 typedef struct s_push
 {
 	char	*numbers;
+	char	**split;
 }		t_push;
 
 int	ft_argcheck(int argc, char **argv, t_push *spec);
-int	ft_check(char *str);
+int	ft_check(t_push *spec);
 
 #endif

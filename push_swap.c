@@ -12,23 +12,46 @@
 
 #include "push_swap.h"
 
-int	ft_check(char *str)
+int	ft_order(t_push *spec)
 {
-	int		i;
-	char	**split;
+	int i;
+	int j;
 
 	i = 0;
-	if (!str)
-		return (0);
-	split = ft_split(str, ' ');
-	if (!split)
-		return (0); 
-	while (split[i] != 0)
+	while (spec->split[i])
 	{
-		if (ft_atoi(split[i]) == 0)
+		j = i + 1;
+		while (spec->split[j])
+		{
+			if (ft_atoi(spec->split[i]) > ft_atoi(spec->split[j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check(t_push *spec)
+{
+	int		i;
+
+	i = 0;
+	if (!spec->numbers)
+		return (0);
+	spec->split = ft_split(spec->numbers, ' ');
+	if (!spec->split)
+	{
+		free (spec->numbers);
+		return (0); 
+	}
+	while (spec->split[i] != 0)
+	{
+		if (ft_atoi(spec->split[i]) == 0)
 			return (0);
 		i++;
 	}
+	free (spec->numbers);
 	return (1);
 }
 
@@ -36,19 +59,25 @@ int	ft_argcheck(int argc, char **argv, t_push *spec)
 {
 	int i;
 
-	i = 0;
+	i = 1;
 	if (argc == 2)
 	{
-		ft_check(argv[1]);
+		ft_check(spec);
 	}
-	spec->numbers = 0;
+	spec->numbers = malloc (1 * sizeof (char));
 	while (i < argc)
 	{
 		spec->numbers = ft_strjoin(spec->numbers, argv[i]);
 		spec->numbers = ft_strjoin(spec->numbers, " ");
 		i++;
 	}
-	ft_check(spec->numbers);
+	if (ft_check(spec) == 0)
+		return (0);
+	if (ft_order(spec))
+	{
+		printf("shits in order\n");
+		return (0);
+	}
 	return (1);
 }
 

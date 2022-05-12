@@ -21,17 +21,17 @@ CFLAGS	= -Wall -Werror -Wextra -g
 libft	= ./libft/libft.a
 
 $(NAME)	:
-		make -C ./libft
-		gcc $(CFLAGS) -o push_swap $(SRCS) $(libft)
+		$(MAKE) -C ./libft
+		gcc $(CFLAGS) ${libft} $(SRCS) -o ${NAME}
 
 all	: $(NAME)
 
 clean :
 		rm -f $(OBJS)
-		make clean -C libft
+		$(MAKE) clean -C libft
 
 fclean : clean
 		rm -f $(NAME)
-		make clean -C libft
+		$(MAKE) fclean -C libft
 
 re : fclean all
