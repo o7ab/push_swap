@@ -23,8 +23,9 @@ int	ft_order(t_push *spec)
 		j = i + 1;
 		while (spec->split[j])
 		{
-			if (ft_atoi(spec->split[i]) > ft_atoi(spec->split[j]))
-				return (0);
+			if (ft_atoi(spec->split[i]) == ft_atoi(spec->split[j])
+				|| (ft_atoi(spec->split[i]) == ft_atoi(spec->split[j])))
+					return (2);
 			j++;
 		}
 		i++;
@@ -73,11 +74,23 @@ int	ft_argcheck(int argc, char **argv, t_push *spec)
 	}
 	if (ft_check(spec) == 0)
 		return (0);
+<<<<<<< HEAD
+	if (ft_order(spec) == 1)
+=======
 	if (ft_order(spec))
+>>>>>>> 114a729494262f690ea3e64ab6762164f4f34115
 	{
 		printf("shits in order\n");
 		return (0);
 	}
+<<<<<<< HEAD
+	if (ft_order(spec) == 2)
+	{
+		printf("there is a duplicate\n");
+		return (0);
+	}
+=======
+>>>>>>> 114a729494262f690ea3e64ab6762164f4f34115
 	return (1);
 }
 
