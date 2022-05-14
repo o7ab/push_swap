@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+int	ft_sort(t_push *spec)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (spec->split[i])
+	{
+		j = i + 1;
+		while (spec->split[j])
+		{
+			if (ft_atoi(spec->split[i]) == ft_atoi(spec->split[j]))
+					return (1);
+			j++;
+		}
+		i++;
+	} 
+	return (0);
+}
+
 int	ft_order(t_push *spec)
 {
 	int i;
@@ -23,14 +43,13 @@ int	ft_order(t_push *spec)
 		j = i + 1;
 		while (spec->split[j])
 		{
-			if (ft_atoi(spec->split[i]) == ft_atoi(spec->split[j])
-				|| (ft_atoi(spec->split[i]) == ft_atoi(spec->split[j])))
-					return (2);
+			if (ft_atoi(spec->split[i]) > ft_atoi(spec->split[j]))
+					return (1);
 			j++;
 		}
 		i++;
-	}
-	return (1);
+	} 
+	return (0);
 }
 
 int	ft_check(t_push *spec)
@@ -74,23 +93,16 @@ int	ft_argcheck(int argc, char **argv, t_push *spec)
 	}
 	if (ft_check(spec) == 0)
 		return (0);
-<<<<<<< HEAD
-	if (ft_order(spec) == 1)
-=======
-	if (ft_order(spec))
->>>>>>> 114a729494262f690ea3e64ab6762164f4f34115
+	if (!ft_order(spec))
 	{
 		printf("shits in order\n");
 		return (0);
 	}
-<<<<<<< HEAD
-	if (ft_order(spec) == 2)
+	if (ft_sort(spec) == 1)
 	{
 		printf("there is a duplicate\n");
 		return (0);
 	}
-=======
->>>>>>> 114a729494262f690ea3e64ab6762164f4f34115
 	return (1);
 }
 
