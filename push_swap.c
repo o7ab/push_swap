@@ -52,6 +52,34 @@ int	ft_order(t_push *spec)
 	return (0);
 }
 
+char	*ft_strjoin2(char *s1, char *s2)
+{
+	char	*ret;
+	int		i;
+	int		j;
+
+	if ((!s1 && !s2) || !ft_atoi(s2))
+		return (0);
+	i = 0;
+	j = 0;
+	ret = malloc ((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!ret)
+		return (NULL);
+	if (s1)
+	{
+		while (s1[i] != '\0')
+		{
+			ret[i] = s1[i];
+			i++;
+		}
+	}
+	while (s2[j] != 0)
+		ret[i++] = s2[j++];
+	ret[i] = 0;
+	free(s1);
+	return (ret);
+}
+
 int	ft_check(t_push *spec)
 {
 	int		i;
@@ -85,21 +113,28 @@ int	ft_argcheck(int argc, char **argv, t_push *spec)
 
 	i = 1;
 	if (argc == 2)
-	{
 		return (ft_check(spec));
-	}
 	spec->numbers = malloc (1 * sizeof (char));
 	while (i < argc)
 	{
-		spec->numbers = ft_strjoin(spec->numbers, argv[i]);
+		spec->numbers = ft_strjoin2(spec->numbers, argv[i]);
 		spec->numbers = ft_strjoin(spec->numbers, " ");
 		i++;
 	}
+	if (!spec->numbers)
+		return (0);
 	if (ft_check(spec) == 0)
 		return (0);
-	if (!ft_order(spec))
-	{
-		printf("shits in order\n");
+	while (spec->split[i])
+		i++;
+	return (i);
+}
+
+int	ft_getarg(t_push *spec)
+{
+	int i;
+
+	if (!spec->split)
 		return (0);
 	while (spec->split[i])
 		i++;
@@ -118,12 +153,6 @@ void	ft_convert(t_push *spec)
 		spec->a[i] = ft_atoi(spec->split[i]);
 		i++;
 	}
-	if (ft_sort(spec) == 1)
-	{
-		printf("there is a duplicate\n");
-		return (0);
-	}
-	return (1);
 }
 
 int main(int argc, char **argv)
