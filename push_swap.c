@@ -97,15 +97,9 @@ int	ft_argcheck(int argc, char **argv, t_push *spec)
 	}
 	if (ft_check(spec) == 0)
 		return (0);
-	return (1);
-}
-
-int	ft_getarg(t_push *spec)
-{
-	int i;
-
-	i = 0;
-	if (!spec->split)
+	if (!ft_order(spec))
+	{
+		printf("shits in order\n");
 		return (0);
 	while (spec->split[i])
 		i++;
@@ -124,6 +118,12 @@ void	ft_convert(t_push *spec)
 		spec->a[i] = ft_atoi(spec->split[i]);
 		i++;
 	}
+	if (ft_sort(spec) == 1)
+	{
+		printf("there is a duplicate\n");
+		return (0);
+	}
+	return (1);
 }
 
 int main(int argc, char **argv)

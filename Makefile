@@ -16,13 +16,17 @@ OBJS = $(SRCS:.c=.o)
 
 NAME	= push_swap
 
-CFLAGS	= -Wall -Werror -Wextra -g
+CFLAGS	= -Wall -Werror -Wextra
 
 libft	= ./libft/libft.a
 
 $(NAME)	:
 		$(MAKE) -C ./libft
+<<<<<<< HEAD
+		gcc $(CFLAGS) $(SRCS) -o ${NAME} ${libft}
+=======
 		gcc $(CFLAGS) ${libft} $(SRCS) -o ${NAME}
+>>>>>>> 114a729494262f690ea3e64ab6762164f4f34115
 
 all	: $(NAME)
 
