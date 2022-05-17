@@ -22,6 +22,8 @@ typedef struct s_push
 {
 	char	*numbers;
 	char	**split;
+	int		args;
+	int		*a;
 }		t_push;
 
 int	ft_argcheck(int argc, char **argv, t_push *spec);
