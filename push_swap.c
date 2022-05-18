@@ -52,33 +52,6 @@ int	ft_order(t_push *spec)
 	return (0);
 }
 
-char	*ft_strjoin2(char *s1, char *s2)
-{
-	char	*ret;
-	int		i;
-	int		j;
-
-	if ((!s1 && !s2) || !ft_atoi(s2))
-		return (0);
-	i = 0;
-	j = 0;
-	ret = malloc ((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!ret)
-		return (NULL);
-	if (s1)
-	{
-		while (s1[i] != '\0')
-		{
-			ret[i] = s1[i];
-			i++;
-		}
-	}
-	while (s2[j] != 0)
-		ret[i++] = s2[j++];
-	ret[i] = 0;
-	free(s1);
-	return (ret);
-}
 
 int	ft_check(t_push *spec)
 {
@@ -93,12 +66,12 @@ int	ft_check(t_push *spec)
 		free (spec->numbers);
 		return (0); 
 	}
-	while (spec->split[i] != 0)
-	{
-		if (ft_atoi(spec->split[i]) == 0)
-			return (0);
-		i++;
-	}
+	// while (spec->split[i] != 0)
+	// {
+	// 	if (!ft_atoi(spec->split[i]))
+	// 		return (0);
+	// 	i++;
+	// }
 	free (spec->numbers);
 	if (!ft_order(spec))
 		return (0);
@@ -117,23 +90,20 @@ int	ft_argcheck(int argc, char **argv, t_push *spec)
 	spec->numbers = malloc (1 * sizeof (char));
 	while (i < argc)
 	{
-		spec->numbers = ft_strjoin2(spec->numbers, argv[i]);
+		spec->numbers = ft_strjoin(spec->numbers, argv[i]);
 		spec->numbers = ft_strjoin(spec->numbers, " ");
 		i++;
 	}
-	if (!spec->numbers)
-		return (0);
 	if (ft_check(spec) == 0)
 		return (0);
-	while (spec->split[i])
-		i++;
-	return (i);
+	return (1);
 }
 
 int	ft_getarg(t_push *spec)
 {
 	int i;
 
+	i = 0;
 	if (!spec->split)
 		return (0);
 	while (spec->split[i])
@@ -147,12 +117,13 @@ void	ft_convert(t_push *spec)
 
 	i = 0;
 	spec->args = ft_getarg(spec);
-	spec->a = malloc (sizeof (int) * spec->args);
+	spec->a = malloc (sizeof (int) * spec->args + 1);
 	while (spec->split[i])
 	{
 		spec->a[i] = ft_atoi(spec->split[i]);
 		i++;
 	}
+	spec->a[i] = (0);
 }
 
 int main(int argc, char **argv)

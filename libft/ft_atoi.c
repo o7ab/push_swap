@@ -13,6 +13,12 @@
 #include "libft.h"
 #include "limits.h"
 
+void	ft_exit(void)
+{
+	write(2, "Error\n", 7);
+	exit(1);
+}
+
 int	ft_atoi(const char *str)
 {
 	size_t	num;
@@ -34,10 +40,10 @@ int	ft_atoi(const char *str)
 	{
 		num = (num * 10) + (str[i] - '0');
 		if (num > INT_MAX)
-			return (0);
+			ft_exit();
 		i++;
 	}
 	if (str[i])
-		return (0);
+		ft_exit();
 	return (sign * num);
 }
