@@ -12,7 +12,24 @@
 
 #include "push_swap.h"
 
-void	ft_sa(t_push *spec)
-{
+// void ft_swap(int *a, int *b)
+// {
+// 	int temp;
+
+// 	temp = *a;
+// 	*a = *b;
+// 	*b = temp;
+// }
+
+// void	ft_sa(t_push *spec)
+// {
+// 	if (spec > spec->a[1])
+//     {
+//        ft_swap(&spec->a[0], &spec->a[1]);
+//     }
+// }
+
+// void	ft_pa(t_push *spec)
+// {
 	
-}
+// }

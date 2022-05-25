@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-int	ft_sort(t_push *spec)
+int	ft_sort(char **split)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (spec->split[i])
+	while (split[i])
 	{
 		j = i + 1;
-		while (spec->split[j])
+		while (split[j])
 		{
-			if (ft_atoi(spec->split[i]) == ft_atoi(spec->split[j]))
+			if (ft_atoi(split[i]) == ft_atoi(split[j]))
 					return (1);
 			j++;
 		}
@@ -32,18 +32,18 @@ int	ft_sort(t_push *spec)
 	return (0);
 }
 
-int	ft_order(t_push *spec)
+int	ft_order(char **split)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (spec->split[i])
+	while (split[i])
 	{
 		j = i + 1;
-		while (spec->split[j])
+		while (split[j])
 		{
-			if (ft_atoi(spec->split[i]) > ft_atoi(spec->split[j]))
+			if (ft_atoi(split[i]) > ft_atoi(split[j]))
 					return (1);
 			j++;
 		}
@@ -52,94 +52,110 @@ int	ft_order(t_push *spec)
 	return (0);
 }
 
+int	ft_check(char **split, char *numbers)
+{
+	if (!numbers)
+		return (0);
+	if (!ft_order(split))
+		return (0);
+	if (ft_sort(split) == 1)
+		return (0);
+	free (numbers);
+	return (1);
+}
 
-int	ft_check(t_push *spec)
+char	**ft_argcheck(int argc, char **argv)
 {
 	int		i;
-
-	i = 0;
-	if (!spec->numbers)
-		return (0);
-	spec->split = ft_split(spec->numbers, ' ');
-	if (!spec->split)
-	{
-		free (spec->numbers);
-		return (0); 
-	}
-	// while (spec->split[i] != 0)
-	// {
-	// 	if (!ft_atoi(spec->split[i]))
-	// 		return (0);
-	// 	i++;
-	// }
-	free (spec->numbers);
-	if (!ft_order(spec))
-		return (0);
-	if (ft_sort(spec) == 1)
-		return (0);
-	return (1);
-}
-
-int	ft_argcheck(int argc, char **argv, t_push *spec)
-{
-	int i;
+	char	*numbers;
+	char	**split;
 
 	i = 1;
-	if (argc == 2)
-		return (ft_check(spec));
-	spec->numbers = malloc (1 * sizeof (char));
+	numbers = malloc (1 * sizeof (char));
 	while (i < argc)
 	{
-		spec->numbers = ft_strjoin(spec->numbers, argv[i]);
-		spec->numbers = ft_strjoin(spec->numbers, " ");
+		numbers = ft_strjoin(numbers, argv[i]);
+		numbers = ft_strjoin(numbers, " ");
 		i++;
 	}
-	if (ft_check(spec) == 0)
-		return (0);
-	return (1);
+	split = ft_split(numbers, ' ');
+	if (!split)
+	{
+		free (numbers);
+		ft_exit(); 
+	}
+	if (ft_check(split, numbers) == 0)
+		ft_exit();
+	return (split);
 }
 
-int	ft_getarg(t_push *spec)
+int	ft_getarg(char **split)
 {
 	int i;
 
 	i = 0;
-	if (!spec->split)
+	if (!split)
 		return (0);
-	while (spec->split[i])
+	while (split[i])
 		i++;
 	return (i);
 }
 
-void	ft_convert(t_push *spec)
+void	lst_add(t_push **spec, int n)
+{
+	t_push *new;
+	t_push *ptr;
+
+	new = ((t_push *) malloc (sizeof(t_push)));
+	new->num = n;
+	new->next = NULL;
+	if (!(*spec))
+		*spec = new;
+	else
+	{
+		ptr = *spec;
+		while (ptr->next)
+			ptr = ptr->next;
+		ptr->next = new;
+	}
+}
+
+void	ft_convert(t_push *spec, char **split)
 {
 	int i;
 
 	i = 0;
-	spec->args = ft_getarg(spec);
-	spec->a = malloc (sizeof (int) * spec->args + 1);
-	while (spec->split[i])
+	spec = NULL;
+	while (split[i])
 	{
-		spec->a[i] = ft_atoi(spec->split[i]);
+		lst_add(&spec, ft_atoi(split[i]));
+		// if (!spec->head)
+		// 	spec->head = spec;
+		printf("spec->num is %d \n", spec->num);
+		spec = spec->next;
 		i++;
 	}
-	spec->a[i] = (0);
+	// spec->head = spec;
+	printf("spec->num is %d \n", spec->num);
+
 }
 
 int main(int argc, char **argv)
 {
 	t_push spec;
+	char **split;
 
 	if (argc < 2)
 	{
 		printf("Invalid number of arguments\n");
 		return (0);
 	}
-	if (ft_argcheck(argc, argv, &spec) == 0)
+	split = ft_argcheck(argc, argv);
+	if (!split)
 	{
 		write (2, "Error \n", 8);
 		return (0);
 	}
-	ft_convert(&spec);
+	ft_convert(&spec, split);
 	printf("shit worked \n");
 }

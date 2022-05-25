@@ -20,13 +20,15 @@
 
 typedef struct s_push
 {
-	char	*numbers;
-	char	**split;
-	int		args;
-	int		*a;
+	struct s_push *next;
+	int		num;
+	struct s_push *head;
 }		t_push;
 
-int	ft_argcheck(int argc, char **argv, t_push *spec);
-int	ft_check(t_push *spec);
+char	**ft_argcheck(int argc, char **argv);
+int		ft_check(char **split, char *numbers);
+void	ft_sa(t_push *spec);
+void	ft_swap(int *a, int *b);
+void	ft_exit(void);
 
 #endif
