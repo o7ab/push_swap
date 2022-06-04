@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/05/18 18:00:25 by oabushar         ###   ########.fr       */
+/*   Created: 2022/06/03 13:01:15 by oabushar          #+#    #+#             */
+/*   Updated: 2022/06/03 13:02:53 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push	*get_last_list(t_push *spec_a)
+void	ft_add_front(t_push **lst, t_push *new)
 {
-	t_push *last;
-
-	while (spec_a->next->next)
+	if (!*lst)
 	{
-		spec_a = spec_a->next;
+		*lst = new;
+		return ;
 	}
-	last = spec_a->next;
-	spec_a->next = NULL;
-	return (last);
+	new->next = *lst;
+	*lst = new;
 }
 
-void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
+
+void	ft_3(t_push *spec_a)
 {
-	(void) spec_b;
-
-	if (args == 2)
-		ft_sa(spec_a);
-	if (args == 3)
-		ft_3(spec_a);
+	spec_a = spec_a->next;
 }
+

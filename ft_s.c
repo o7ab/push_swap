@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/05/18 18:00:25 by oabushar         ###   ########.fr       */
+/*   Created: 2022/06/04 20:50:45 by oabushar          #+#    #+#             */
+/*   Updated: 2022/06/04 20:57:29 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push	*get_last_list(t_push *spec_a)
+void ft_swap(t_push *a, t_push *b)
 {
-	t_push *last;
+	t_push temp;
 
-	while (spec_a->next->next)
-	{
-		spec_a = spec_a->next;
-	}
-	last = spec_a->next;
-	spec_a->next = NULL;
-	return (last);
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
-void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
+void	ft_sa(t_push *spec_a)
 {
-	(void) spec_b;
+       ft_swap(spec_a, spec_a->next);
+}
 
-	if (args == 2)
-		ft_sa(spec_a);
-	if (args == 3)
-		ft_3(spec_a);
+void	ft_sb(t_push *spec_a)
+{
+       ft_swap(spec_b, spec_b->next);
+}
+
+void    ft_ss(t_push *spec_a, t_push *spec_b)
+{
+    ft_swap(spec_b, spec_b->next);
+    ft_swap(spec_b, spec_b->next);
 }

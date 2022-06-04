@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = push_swap.c
+SRCS = push_swap.c operations.c operations2.c ft_r.c ft_rr.c ft_s.c ft_p.c
 
 OBJS = $(SRCS:.c=.o)
 

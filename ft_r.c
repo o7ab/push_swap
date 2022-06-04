@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_r.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/05/18 18:00:25 by oabushar         ###   ########.fr       */
+/*   Created: 2022/06/03 12:56:04 by oabushar          #+#    #+#             */
+/*   Updated: 2022/06/04 20:49:16 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push	*get_last_list(t_push *spec_a)
+void	ft_ra(t_push *spec_a)
 {
-	t_push *last;
+	t_push *head;
 
-	while (spec_a->next->next)
-	{
-		spec_a = spec_a->next;
-	}
-	last = spec_a->next;
-	spec_a->next = NULL;
-	return (last);
+	lst_add(&spec_a, spec_a->num);
+	head = spec_a->next;
+	free (spec_a);
+	spec_a = head;
 }
 
-void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
+void	ft_rb(t_push *spec_b)
 {
-	(void) spec_b;
+	t_push *head;
 
-	if (args == 2)
-		ft_sa(spec_a);
-	if (args == 3)
-		ft_3(spec_a);
+	lst_add(&spec_b, spec_b->num);
+	head = spec_b->next;
+	free (spec_b);
+	spec_b = head;
+}
+
+void	ft_rr(t_push *spec_a, t_push *spec_b)
+{
+	ft_ra(spec_a);
+	ft_rb(spec_b);
 }

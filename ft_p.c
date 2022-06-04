@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_p.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/05/18 18:00:25 by oabushar         ###   ########.fr       */
+/*   Created: 2022/06/04 20:50:18 by oabushar          #+#    #+#             */
+/*   Updated: 2022/06/04 20:50:34 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push_swap.h"
 
-t_push	*get_last_list(t_push *spec_a)
+void	ft_pa(t_push **spec_a, t_push **spec_b)
 {
-	t_push *last;
+	t_push *top_b;
 
-	while (spec_a->next->next)
-	{
-		spec_a = spec_a->next;
-	}
-	last = spec_a->next;
-	spec_a->next = NULL;
-	return (last);
+	top_b = (*spec_b);
+	(*spec_b) = (*spec_b)->next;
+	top_b->next = (*spec_a);
+	(*spec_a) = top_b;
 }
 
-void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
+void	ft_pb(t_push **spec_a, t_push **spec_b)
 {
-	(void) spec_b;
+	t_push *top_a;
 
-	if (args == 2)
-		ft_sa(spec_a);
-	if (args == 3)
-		ft_3(spec_a);
+	top_a = (*spec_a);
+	(*spec_a) = (*spec_a)->next;
+	top_a->next = (*spec_b);
+	(*spec_b) = top_a;
 }
