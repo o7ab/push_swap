@@ -136,6 +136,7 @@ int main(int argc, char **argv)
 {
 	t_push	*spec_a;
 	t_push	*spec_b;
+	int		args;
 	char	**split;
 
 	spec_a = NULL;
@@ -144,10 +145,9 @@ int main(int argc, char **argv)
 	split = ft_argcheck(argc, argv);
 	if (!split)
 		ft_exit();
+	args = ft_getarg(split);
 	ft_convert(&spec_a, split);
-	ft_sa(spec_a);
-	ft_rra(&spec_a);
-	ft_ra(spec_a);
-	ft_pa(&spec_a, &spec_b);
-	printf("shit worked \n");
+	spec_b = NULL;
+	ft_algorithm(args, spec_a, spec_b);
+	// printf("shit worked \n");
 }

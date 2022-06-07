@@ -6,20 +6,22 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:56:04 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/04 20:49:16 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/07 09:35:39 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_ra(t_push *spec_a)
+t_push	**ft_ra(t_push **spec_a)
 {
 	t_push *head;
 
-	lst_add(&spec_a, spec_a->num);
-	head = spec_a->next;
-	free (spec_a);
-	spec_a = head;
+	lst_add(spec_a, (*spec_a)->num);
+	head = (*spec_a)->next;
+	free (*spec_a);
+	*spec_a = head;
+	write(1, "ra\n", 3);
+	return (spec_a);
 }
 
 void	ft_rb(t_push *spec_b)
@@ -30,10 +32,5 @@ void	ft_rb(t_push *spec_b)
 	head = spec_b->next;
 	free (spec_b);
 	spec_b = head;
-}
-
-void	ft_rr(t_push *spec_a, t_push *spec_b)
-{
-	ft_ra(spec_a);
-	ft_rb(spec_b);
+	write(1, "rb\n", 3);
 }

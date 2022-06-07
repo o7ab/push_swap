@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 20:26:51 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/04 20:32:55 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:25:48 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_rra(t_push **spec_a)
 	last = get_last_list((*spec_a));
 	last->next = (*spec_a);
 	ft_add_front(spec_a, last);
+	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_push **spec_b)
@@ -32,10 +33,5 @@ void	ft_rrb(t_push **spec_b)
 	last = get_last_list((*spec_b));
 	last->next = (*spec_b);
 	ft_add_front(spec_b, last);
-}
-
-void    ft_rrr(t_push **spec_a, t_push **spec_b)
-{
-    ft_rra(spec_a);
-    ft_rrb(spec_b);
+	write(1, "rrb\n", 4);
 }

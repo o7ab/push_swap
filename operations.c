@@ -32,5 +32,9 @@ void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
 	if (args == 2)
 		ft_sa(spec_a);
 	if (args == 3)
-		ft_3(spec_a);
+		ft_3(&spec_a);
+	if (args == 4)
+		ft_4(&spec_a, &spec_b);
+	if (args == 5)
+		ft_5(&spec_a, &spec_b);
 }
