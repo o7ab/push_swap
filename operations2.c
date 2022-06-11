@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:01:15 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/07 10:52:13 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:40:42 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,19 +98,18 @@ void push_smallest_to_b(t_push **spec_a, t_push **spec_b)
 	ft_pb(spec_a, spec_b);
 }
 
+void	ft_4(t_push **spec_a, t_push **spec_b)
+{
+	push_smallest_to_b(spec_a, spec_b);
+	ft_3(spec_a);
+	ft_pa(spec_a, spec_b);
+}
+
 void	ft_5(t_push **spec_a, t_push **spec_b)
 {
 	push_smallest_to_b(spec_a, spec_b);
 	push_smallest_to_b(spec_a, spec_b);
 	ft_3(spec_a);
 	ft_pa(spec_a, spec_b);
-	ft_pa(spec_a, spec_b);
-
-}
-
-void	ft_4(t_push **spec_a, t_push **spec_b)
-{
-	push_smallest_to_b(spec_a, spec_b);
-	ft_3(spec_a);
 	ft_pa(spec_a, spec_b);
 }

@@ -22,6 +22,7 @@ typedef struct s_push
 {
 	struct s_push *next;
 	int		num;
+	int		index;
 }		t_push;
 
 char	**ft_argcheck(int argc, char **argv);
@@ -40,6 +41,9 @@ void	ft_3(t_push **spec_a);
 void	ft_4(t_push **spec_a, t_push **spec_b);
 void	ft_5(t_push **spec_a, t_push **spec_b);
 t_push	*get_last_list(t_push *spec_a);
-
+void	ft_swap_num(int *a, int *b);
+void	ft_get_index(t_push *spec_a, int args);
+void	ft_rb(t_push *spec_b);
+void	ft_rrb(t_push **spec_b);
 
 #endif

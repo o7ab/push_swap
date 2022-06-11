@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 20:50:45 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/06 10:23:43 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/08 17:46:31 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 void ft_swap(t_push *a, t_push *b)
 {
 	t_push temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void ft_swap_num(int *a, int *b)
+{
+	int temp;
 
 	temp = *a;
 	*a = *b;
