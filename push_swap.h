@@ -32,7 +32,7 @@ void	ft_swap(t_push *a, t_push *b);
 void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b);
 void	lst_add(t_push **spec_a, int n);
 void	ft_pb(t_push **spec_a, t_push **spec_b);
-t_push	**ft_ra(t_push **spec_a);
+void	ft_ra(t_push *spec_a);
 void	ft_pa(t_push **spec_a, t_push **spec_b);
 void	ft_exit(void);
 void	ft_rra(t_push **spec_a);

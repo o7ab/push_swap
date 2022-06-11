@@ -75,13 +75,13 @@ void	ft_sort_big(t_push **spec_a, t_push **spec_b, int args)
 			ft_rb(*spec_b);
 			index++;
 		}
-		else if ((*spec_a)->index <= index + 21)
+		else if ((*spec_a)->index <= index + 15)
 		{
 			ft_pb(spec_a, spec_b);
 			index++;
 		}
 		else if ((*spec_a)->index >= index)
-			ft_ra(spec_a);
+			ft_ra(*spec_a);
 	}
 	big_help(spec_a, spec_b, args);
 }
@@ -99,11 +99,6 @@ void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
 		ft_4(&spec_a, &spec_b);
 	if (args == 5)
 		ft_5(&spec_a, &spec_b);
-	while (spec_a)
-	{
-		printf("%d \n", spec_a->index);
-		spec_a = spec_a->next;
-	}
-	// if (args > 5 && args <= 100)
-	// 	ft_sort_big(&spec_a,&spec_b, args);
+	if (args > 5 && args <= 100)
+		ft_sort_big(&spec_a, &spec_b, args);
 }
