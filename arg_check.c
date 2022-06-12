@@ -67,11 +67,11 @@ int	ft_check(char **split, char *numbers)
 {
 	if (!numbers)
 		return (0);
+	free (numbers);
 	if (!ft_order(split))
 		exit(1);
 	if (ft_sort(split) == 1)
 		return (0);
-	free (numbers);
 	return (1);
 }
 
@@ -83,6 +83,8 @@ char	**ft_argcheck(int argc, char **argv)
 
 	i = 1;
 	numbers = malloc (1 * sizeof (char));
+	if (!numbers)
+		return (NULL);
 	while (i < argc)
 	{
 		numbers = ft_strjoin(numbers, argv[i]);

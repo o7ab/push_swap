@@ -30,7 +30,7 @@ int	ft_get_biggest(t_push *spec_b, int i)
 	i = 0;
 	while (spec_b)
 	{
-		if (spec_b->num > i)
+		if (spec_b->num >= i)
 		{
 			i = spec_b->num;
 		}
