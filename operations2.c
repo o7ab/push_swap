@@ -6,32 +6,19 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:01:15 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/12 14:10:53 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:57:26 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_add_front(t_push **lst, t_push *new)
-{
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	new->next = *lst;
-	*lst = new;
-}
-
-
 void	ft_3(t_push **spec_a)
 {
-	int num[3];
+	int	num[3];
 
 	num[0] = (*spec_a)->num;
 	num[1] = (*spec_a)->next->num;
 	num[2] = (*spec_a)->next->next->num;
-
 	if (num[0] > num[1] && num[0] < num[2])
 		ft_sa(*spec_a);
 	else if (num[0] > num[1] && num[2] > num[1])
@@ -61,23 +48,22 @@ void	ft_small_helper(t_push **spec_a, int i, int n)
 			i++;
 		}
 	}
-	else 
+	else
 	{
 		while (i >= n)
 		{
 			ft_rra(spec_a);
 			i--;
 		}
-		
 	}
 }
 
-void push_smallest_to_b(t_push **spec_a, t_push **spec_b)
+void	push_smallest_to_b(t_push **spec_a, t_push **spec_b)
 {
-	t_push *temp;
-	int i;
-	int n;
-	int x;
+	t_push	*temp;
+	int		i;
+	int		n;
+	int		x;
 
 	temp = *spec_a;
 	x = temp->num;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdio.h>
@@ -20,9 +20,9 @@
 
 typedef struct s_push
 {
-	struct s_push *next;
-	int		num;
-	int		index;
+	struct s_push	*next;
+	int				num;
+	int				index;
 }		t_push;
 
 char	**ft_argcheck(int argc, char **argv);
@@ -45,5 +45,11 @@ void	ft_swap_num(int *a, int *b);
 void	ft_get_index(t_push *spec_a, int args);
 void	ft_rb(t_push **spec_b);
 void	ft_rrb(t_push **spec_b);
+void	ft_sort_huge(t_push **spec_a, t_push **spec_b, int args);
+void	ft_sort_big(t_push **spec_a, t_push **spec_b, int args);
+int		find_biggest(t_push *spec_b, int args, int i);
+int		getarg(t_push *spec_b);
+int		find_biggest(t_push *spec_b, int args, int i);
+int		ft_get_biggest(t_push *spec_b, int i);
 
 #endif

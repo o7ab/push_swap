@@ -6,11 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:56:04 by oabushar          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/06/12 14:15:18 by oabushar         ###   ########.fr       */
-=======
-/*   Updated: 2022/06/12 04:34:23 by oabushar         ###   ########.fr       */
->>>>>>> fdaf0431075f5c087896f7ff62d7c78cf834c3a9
+/*   Updated: 2022/06/12 23:00:55 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +14,8 @@
 
 void	lst_add_index(t_push **spec_a, int n, int index)
 {
-	t_push *new;
-	t_push *ptr;
+	t_push	*new;
+	t_push	*ptr;
 
 	new = ((t_push *) malloc (sizeof(t_push)));
 	new->num = n;
@@ -36,41 +32,9 @@ void	lst_add_index(t_push **spec_a, int n, int index)
 	}
 }
 
-<<<<<<< HEAD
-=======
-// void	ft_ra(t_push **spec_a)
-// {
-// 	t_push *ptr;
-//     t_push *copy;
-//     ptr = *spec_a;
-//     copy = (*spec_a)->next;
-//     while ((*spec_a)->next)
-//         *spec_a = (*spec_a)->next;
-//     (*spec_a)->next = ptr;
-//     ptr->next = NULL;
-//     *spec_a = copy;
-// 	write(1, "ra\n", 4);
-// }
-
-// void	ft_rb(t_push **spec_b)
-// {
-// 	t_push *ptr;
-//     t_push *copy;
-	
-//     ptr = *spec_b;
-//     copy = (*spec_b)->next;
-//     while ((*spec_b)->next)
-//         *spec_b = (*spec_b)->next;
-//     (*spec_b)->next = ptr;
-//     ptr->next = NULL;
-//     *spec_b = copy;
-//     write(1, "rb\n", 3);
-// }
-
->>>>>>> fdaf0431075f5c087896f7ff62d7c78cf834c3a9
 void	ft_ra(t_push **spec_a)
 {
-	t_push *head;
+	t_push	*head;
 
 	lst_add_index(spec_a, (*spec_a)->num, (*spec_a)->index);
 	head = (*spec_a)->next;
@@ -81,7 +45,7 @@ void	ft_ra(t_push **spec_a)
 
 void	ft_rb(t_push **spec_b)
 {
-	t_push *head;
+	t_push	*head;
 
 	lst_add_index(spec_b, (*spec_b)->num, (*spec_b)->index);
 	head = (*spec_b)->next;

@@ -6,16 +6,16 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:55:02 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/11 21:18:05 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/12 22:59:27 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *get_arr(t_push *spec_a, int args)
+int	*get_arr(t_push *spec_a, int args)
 {
-	int i;
-	int *arr;
+	int	i;
+	int	*arr;
 
 	i = 0;
 	arr = malloc (sizeof(int) * args);
@@ -30,7 +30,7 @@ int *get_arr(t_push *spec_a, int args)
 	return (arr);
 }
 
-void    get_index(t_push *spec_a, int *arr)
+void	get_index(t_push *spec_a, int *arr)
 {
 	int	j;
 
@@ -52,7 +52,7 @@ int	*sort_arr(int *arr, int args)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 0;
 	while (i < args)
@@ -69,9 +69,9 @@ int	*sort_arr(int *arr, int args)
 	return (arr);
 }
 
-void    ft_get_index(t_push *spec_a, int args)
+void	ft_get_index(t_push *spec_a, int args)
 {
-	int *arr;
+	int	*arr;
 
 	arr = get_arr(spec_a, args);
 	arr = sort_arr(arr, args);

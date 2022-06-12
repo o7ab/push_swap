@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 20:26:51 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/06 10:25:48 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/12 23:01:21 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_rra(t_push **spec_a)
 {
-	t_push *last;
+	t_push	*last;
 
 	if (!(*spec_a))
 		return ;
@@ -26,7 +26,7 @@ void	ft_rra(t_push **spec_a)
 
 void	ft_rrb(t_push **spec_b)
 {
-	t_push *last;
+	t_push	*last;
 
 	if (!(*spec_b))
 		return ;
