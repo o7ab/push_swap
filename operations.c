@@ -25,23 +25,34 @@ t_push	*get_last_list(t_push *spec_a)
 	return (last);
 }
 
-int	find_biggest(t_push **spec_b, int args)
+int	ft_get_biggest(t_push *spec_b, int i)
+{
+	while (spec_b)
+	{
+		if (spec_b->num > i)
+		{
+			i = spec_b->num;
+		}
+		spec_b = spec_b->next;
+	}
+	
+	return (i);
+}
+
+int	find_biggest(t_push *spec_b, int args)
 {
 	int i;
-	int index;
+	int j;
 
+	j = 0;
 	i = 0;
-	index = 0;
-	while (*spec_b)
+	i = ft_get_biggest(spec_b, i);
+	while (spec_b && i != spec_b->num)
 	{
-		if ((*spec_b)->num > i)
-		{
-			i = (*spec_b)->num;
-			index = (*spec_b)->index;
-		}
-		(*spec_b) = (*spec_b)->next;
+		j++;
+		spec_b = spec_b->next;
 	}
-	if (index > args / 2)
+	if (j < args / 2)
 		return (1);
 	else 
 		return (0);
@@ -51,9 +62,9 @@ void	big_help(t_push **spec_a, t_push **spec_b, int args)
 {
 	while (*spec_b)
 	{
-		if (find_biggest(spec_b, args))
-			ft_rb(*spec_b);
-		else if (!find_biggest(spec_b, args))
+		if (find_biggest(*spec_b, args))
+			ft_rb(spec_b);
+		else if (!find_biggest(*spec_b, args))
 			ft_rrb(spec_b);
 		else
 			ft_pa(spec_a, spec_b);
@@ -72,7 +83,7 @@ void	ft_sort_big(t_push **spec_a, t_push **spec_b, int args)
 		if ((*spec_a)->index <= index && index > 1)
 		{
 			ft_pb(spec_a, spec_b);
-			ft_rb(*spec_b);
+			ft_rb(spec_b);
 			index++;
 		}
 		else if ((*spec_a)->index <= index + 15)
@@ -81,7 +92,7 @@ void	ft_sort_big(t_push **spec_a, t_push **spec_b, int args)
 			index++;
 		}
 		else if ((*spec_a)->index >= index)
-			ft_ra(*spec_a);
+			ft_ra(spec_a);
 	}
 	big_help(spec_a, spec_b, args);
 }
