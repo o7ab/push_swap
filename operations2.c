@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:01:15 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/11 21:49:48 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/12 02:24:18 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_3(t_push **spec_a)
 	if (num[0] > num[1] && num[0] < num[2])
 		ft_sa(*spec_a);
 	else if (num[0] > num[1] && num[2] > num[1])
-		ft_rb(*spec_a);
+		ft_ra(spec_a);
 	else if (num[1] > num[0] && num[0] > num[2])
 		ft_rra(spec_a);
 	else if (num[0] > num[1] && num[0] > num[2])
@@ -46,7 +46,7 @@ void	ft_3(t_push **spec_a)
 	else if (num[0] < num[2] && num[1] > num[2])
 	{
 		ft_sa(*spec_a);
-		ft_ra(*spec_a);
+		ft_ra(spec_a);
 	}
 }
 
@@ -57,7 +57,7 @@ void	ft_small_helper(t_push **spec_a, int i, int n)
 		i = 0;
 		while (i < n)
 		{
-			ft_ra(*spec_a);
+			ft_ra(spec_a);
 			i++;
 		}
 	}

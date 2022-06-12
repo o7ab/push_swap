@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/05/18 18:00:25 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/12 04:05:35 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ t_push	*get_last_list(t_push *spec_a)
 	return (last);
 }
 
-int	find_biggest(t_push **spec_b, int args)
+int	find_biggest(t_push *spec_b, int args)
 {
 	int i;
 	int index;
 
 	i = 0;
 	index = 0;
-	while (*spec_b)
+	while (spec_b)
 	{
-		if ((*spec_b)->num > i)
+		if (spec_b->num > i)
 		{
-			i = (*spec_b)->num;
-			index = (*spec_b)->index;
+			i = spec_b->num;
+			index = spec_b->index;
 		}
-		(*spec_b) = (*spec_b)->next;
+		spec_b = spec_b->next;
 	}
 	if (index > args / 2)
 		return (1);
@@ -51,9 +51,9 @@ void	big_help(t_push **spec_a, t_push **spec_b, int args)
 {
 	while (*spec_b)
 	{
-		if (find_biggest(spec_b, args))
-			ft_rb(*spec_b);
-		else if (!find_biggest(spec_b, args))
+		if (find_biggest(*spec_b, args))
+			ft_rb(spec_b);
+		else if (!find_biggest(*spec_b, args))
 			ft_rrb(spec_b);
 		else
 			ft_pa(spec_a, spec_b);
@@ -72,7 +72,7 @@ void	ft_sort_big(t_push **spec_a, t_push **spec_b, int args)
 		if ((*spec_a)->index <= index && index > 1)
 		{
 			ft_pb(spec_a, spec_b);
-			ft_rb(*spec_b);
+			ft_rb(spec_b);
 			index++;
 		}
 		else if ((*spec_a)->index <= index + 15)
@@ -81,7 +81,7 @@ void	ft_sort_big(t_push **spec_a, t_push **spec_b, int args)
 			index++;
 		}
 		else if ((*spec_a)->index >= index)
-			ft_ra(*spec_a);
+			ft_ra(spec_a);
 	}
 	big_help(spec_a, spec_b, args);
 }
@@ -100,5 +100,6 @@ void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
 	if (args == 5)
 		ft_5(&spec_a, &spec_b);
 	if (args > 5 && args <= 100)
-		ft_sort_big(&spec_a, &spec_b, args);
+		// ft_sort_big(&spec_a, &spec_b, args);
+	printf("%d \n", find_biggest(spec_a, args));
 }
