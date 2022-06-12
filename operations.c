@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/05/18 18:00:25 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/12 04:05:35 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ void	ft_algorithm(int args, t_push *spec_a, t_push *spec_b)
 	if (args == 5)
 		ft_5(&spec_a, &spec_b);
 	if (args > 5 && args <= 100)
-		ft_sort_big(&spec_a, &spec_b, args);
+		// ft_sort_big(&spec_a, &spec_b, args);
+	printf("%d \n", find_biggest(spec_a, args));
 }
