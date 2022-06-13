@@ -51,5 +51,6 @@ int		find_biggest(t_push *spec_b, int args, int i);
 int		getarg(t_push *spec_b);
 int		find_biggest(t_push *spec_b, int args, int i);
 int		ft_get_biggest(t_push *spec_b, int i);
+void	ft_free_split(char **split);
 
 #endif

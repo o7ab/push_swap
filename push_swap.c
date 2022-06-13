@@ -30,6 +30,8 @@ void	lst_add(t_push **spec_a, int n)
 	t_push	*ptr;
 
 	new = ((t_push *) malloc (sizeof(t_push)));
+	if (!new)
+		return ;
 	new->num = n;
 	new->next = NULL;
 	if (!(*spec_a))
@@ -53,6 +55,7 @@ void	ft_convert(t_push **spec_a, char **split)
 		lst_add(spec_a, ft_atoi(split[i]));
 		i++;
 	}
+	ft_free_split(split);
 }
 
 int	main(int argc, char **argv)

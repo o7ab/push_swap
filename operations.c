@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:00:01 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/12 22:55:53 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/13 04:07:16 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_push	*get_last_list(t_push *spec_a)
 int	ft_get_biggest(t_push *spec_b, int i)
 {
 	i = 0;
+	i = spec_b->num;
 	while (spec_b)
 	{
 		if (spec_b->num >= i)

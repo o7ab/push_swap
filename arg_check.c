@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 22:46:33 by oabushar          #+#    #+#             */
-/*   Updated: 2022/06/12 22:57:32 by oabushar         ###   ########.fr       */
+/*   Updated: 2022/06/13 04:18:14 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,25 @@ int	ft_order(char **split)
 	return (0);
 }
 
+void	ft_free_split(char **split)
+{
+	int i;
+	
+	i = 0;
+	if (split)
+	{
+		while (split[i])
+		{
+			free(split[i]);
+			i++;
+		}
+		free (split[i]);
+		free (split);
+	}
+	// write(2, "Error\n", 6);
+	// exit(1);
+}
+
 void	ft_add_front(t_push **lst, t_push *new)
 {
 	if (!*lst)
@@ -69,9 +88,15 @@ int	ft_check(char **split, char *numbers)
 		return (0);
 	free (numbers);
 	if (!ft_order(split))
+	{
+		ft_free_split(split);
 		exit(1);
+	}
 	if (ft_sort(split) == 1)
+	{
+		ft_free_split(split);
 		return (0);
+	}
 	return (1);
 }
 
