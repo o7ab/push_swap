@@ -107,9 +107,7 @@ char	**ft_argcheck(int argc, char **argv)
 	char	**split;
 
 	i = 1;
-	numbers = malloc (1 * sizeof (char));
-	if (!numbers)
-		return (NULL);
+	numbers = NULL;
 	while (i < argc)
 	{
 		numbers = ft_strjoin(numbers, argv[i]);
